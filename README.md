@@ -1,5 +1,14 @@
 # Vercel Deployment Instructions
 
+### Installation Instructions
+Just in case you want to run this locally remember to fork and clone, then run `npm install`, this will install the packages in the dependencies. 
+
+Create your .env file and drop in the env from line 8, change the `DATABASE_URI` to your remote mongo connection string if you want to use the remote database instead of local. 
+
+If you want to run this locally make sure to also comment out the `export default app` in the index.js, and comment in the `app.listen` function!
+
+After you install the packages, and add your .env with your credentials, you can run `npm start` to run your server using the start script in your package.json file.
+
 ### Step-by-step instructions
 
 1. Create a folder called `api` on the root of your application
@@ -115,11 +124,11 @@ The main entry point to your app is determined by the `"main"` key value pair, a
 8. Be sure to configure your environmental variables in the settings/ environmental variables tab on vercel itself when you import your project, for this project you need to add the following env values
 
 ```javascript
-DATABASE_URI="mongodb+srv://seir:<PASSWORD>@sei.c1juz.mongodb.net/<DATABASE NAME>?retryWrites=true&w=majority"
+DATABASE_URI="mongodb+srv://<USERNAME>:<PASSWORD>@sei.c1juz.mongodb.net/<DATABASE NAME>?retryWrites=true&w=majority"
 PORT='3001'
 SECRET='mysecret'
 ```
-- Do not forget to add your password and the name you would like to give to your database in your connection string!
+- Do not forget to add your database username, password and the name you would like to give to your database in your connection string!
 
 ![screenshot of setting env variables](./assets/Screen%20Shot%202024-04-02%20at%204.08.43%20PM.png)
 
@@ -142,7 +151,7 @@ When you execute the deployment hook command in the terminal it should look some
 
 ![screenshot of executing the deployment hook](assets/Screen%20Shot%202024-04-02%20at%204.31.15%20PM.png)
 
-1.   Check your deployment on the vercel for the feature/vercel-deployment on the deployments tab.
+11.   Check your deployment on the vercel for the feature/vercel-deployment on the deployments tab.
 It should look something like this
 
 ![screenshot of the deployment in the deployments tab](assets/Screen%20Shot%202024-04-02%20at%204.23.22%20PM.png)
@@ -156,13 +165,19 @@ If everything went well you were able to deploy your application, well done! If 
 
 
 ## Bonus
-If you got this far, you can also import the following endpoints to your postman and have access to these routes I  have set up for you
+If you got this far, you can also import the following endpoints to your postman and have access to these routes I have set up for you
 
+13. ### Postman Routes
 
+Below are a list of routes that you can set up for your application. Check out the routes in the router files and put together your own collection of tab/routes.
 
+![screenshot of postman folders and routes](assets/Screen%20Shot%202024-04-04%20at%2011.58.43%20AM.png)
 
+Never alter anything in the routes, each tab is saved in the folder as it's own unique tab/ route, you should only change things like the request body for POST and PUT actions. 
 
+You should always follow this pattern/ convention when you are testing an API you are building to save you time. If you only use 1 tab in postman and you constantly have to re-make the same routes and requests instead of building them out like this you will slow yourself down needlessly when testing your API.
 
+# Disclaimer
+If I missed anything or you followed all the instructions and were unable to deploy, please let me know so I can add any missing information to this repo! 
 
-
-
+Thank you kindly!
